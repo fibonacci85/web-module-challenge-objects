@@ -71,13 +71,30 @@ const reviews = [{name: "Daniela", rating: 5, feedback:"Beautiful atmosphere and
 
 /* Task 3: Console.log just Julius' feedback */
 
-console.log (reviews.name.feedback)
+console.log (reviews[5].feedback)
 
 
 /* Task 4: Add a new rating with your (fictitious) opinions of the restaurant in the same format as the reviews above. */
 
+function createReview(newArray, name, rating, feedback){ 
+    newArray.push({name,rating,feedback});
+    return newArray;
+}
 
-/* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
+console.log (createReview (reviews, "Francis", 1, "There was a fly in my soup!"))
+
+
+/* Task 5: Add the following feedback to Reyna's rating - 
+"this place is chill with really cool people, great for getting work done on weekdays" */
+
+function addFeedback(array, index, feedback){
+  array[index].feedback = feedback;
+  return array;
+}
+
+console.log(addFeedback(reviews, 7, 'this place is chill with really cool people, great for getting work done on weekdays'));
+
+
 
 /*  Task 6: Write a function to return a review based on the index of the review in the array.
 
@@ -91,9 +108,11 @@ and should return a string in the format `{name} gave the restaurant a {rating},
  * For example, if getReviewByIndex is invoked with reviews and the number 0
  * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 */
-function getReviewByIndex(reviews, index) {
-    /* code here */
+function getReviewByIndex(array,index) {
+    return `${array[index].name} gave the restaurant a ${array[index].rating}, and their feedback was: ${array[index].feedback}`
   }
+
+  console.log (getReviewByIndex(reviews, 2))
   
 
 /* Task 7: Write a function to get information about the most recent review called `getLastReview`
@@ -105,9 +124,12 @@ and should return a string in the format `name} gave the restaurant a {rating}, 
 
 For example, if getLastReview is invoked passing the reviews array it will return `Reyna gave the restaurant a 3.5 star review and their feedback was: "this place is chill with really cool people, great for getting work done on weekdays"`.
 */
-function getLastReview(/* code here */) {
-    /* code here */
+function getLastReview(array) {
+  if (array.length-1 === array) {
+   return `${array.name} gave the restaurant a ${array.rating}, and their feedback was: ${array.feedback}`
   } 
+
+  console.log (getLastReview(reviews))
 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
@@ -163,9 +185,3 @@ The returned object should have the following characteristics:
          (1) causes the odometer in the object to be increased by the distance,
          (2) returns the updated value of the `odometer`.
 */
-
-
-function carMaker(/* code here */) {
-    /* code here */
-    
-}
